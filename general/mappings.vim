@@ -7,10 +7,17 @@ nnoremap <Leader>q :wq<cr>
 nnoremap <Leader>w :w<cr>
 
 " Use alt + hjkl to resize windows
-nnoremap <M-j>    :resize +2<CR>
-nnoremap <M-k>    :resize -2<CR>
-nnoremap <M-h>    :vertical resize -2<CR>
-nnoremap <M-l>    :vertical resize +2<CR>
+if has('macunix')
+    nnoremap ∆  :resize +2<CR>
+    nnoremap ˚  :resize -2<CR>
+    nnoremap ˙  :vertical resize -2<CR>
+    nnoremap ¬  :vertical resize +2<CR>
+else
+    nnoremap <M-j>    :resize +2<CR>
+    nnoremap <M-k>    :resize -2<CR>
+    nnoremap <M-h>    :vertical resize -2<CR>
+    nnoremap <M-l>    :vertical resize +2<CR>
+endif
 
 " Clear other buffers
 nnoremap <leader>l :only<cr>

@@ -12,5 +12,18 @@ fun! CycleColor()
     colorscheme ayu
 endfun
 
+let g:colorcolumn_enabled = 1
 set colorcolumn=80
-highlight ColorColumn ctermbg=1 guibg=grey
+highlight ColorColumn ctermbg=1 guibg=lightgrey
+
+nnoremap <F3> :call CycleColorColumn()<cr>
+fun! CycleColorColumn()
+    if g:colorcolumn_enabled == 0
+        set colorcolumn=80
+        highlight ColorColumn ctermbg=1 guibg=lightgrey
+        let g:colorcolumn_enabled = 1
+    else
+        set colorcolumn=0
+        let g:colorcolumn_enabled = 0
+    endif
+endfun

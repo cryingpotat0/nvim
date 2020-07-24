@@ -5,6 +5,10 @@ set hidden
 set encoding=utf8
 set fileencoding=utf8
 
+"Set correct python
+
+let g:python3_host_prog = '/Users/raghav/.config/nvim/venv/bin/python'
+
 "Set leader
 let mapleader = ';'
 let maplocalleader = ','

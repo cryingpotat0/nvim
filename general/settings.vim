@@ -7,7 +7,7 @@ set fileencoding=utf8
 
 "Set correct python
 
-let g:python3_host_prog = '/Users/raghav/.config/nvim/venv/bin/python'
+let g:python3_host_prog = '~/.config/nvim/venv/bin/python'
 
 "Set leader
 let mapleader = ';'

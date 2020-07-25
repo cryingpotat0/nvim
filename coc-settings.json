@@ -12,7 +12,8 @@
     ],
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
     "python.jediPath": "~/.config/nvim/venv/lib/python3.7/site-packages",
-    "python.venvPath": "~/.config/nvim/venv/bin/python3"
+    "python.venvPath": "~/.config/nvim/venv/bin/python3",
+    "clangd.path": "/home/raghav/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+    "clangd.enabled": false
 }

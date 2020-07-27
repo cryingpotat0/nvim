@@ -1,5 +1,5 @@
 " Buffer scroll keep the mapping 'like' C-n and C-o
-nnoremap <tab> :bn<cr>
+" nnoremap <tab> :bn<cr> " overwrites C-i
 nnoremap <s-tab> :bp<cr> 
 
 " Save control

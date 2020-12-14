@@ -26,7 +26,7 @@ set expandtab
 
 " Folds
 set foldmethod=syntax
-set foldlevel=0
+set foldlevel=0 nomodeline
 
 "Auxillary options
 set smartindent            " Makes indenting smart

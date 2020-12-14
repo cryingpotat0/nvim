@@ -1,11 +1,11 @@
 set termguicolors     " enable true colors support
-let g:ayucolor="mirage"   " for dark version of theme
+let g:ayucolor="light"   " for dark version of theme
 colorscheme ayu
 
 nnoremap <F2> :call CycleColor()<cr>
 
 fun! CycleColor()
-    let colors = ['light', 'dark', 'mirage']
+    let colors = ['mirage', 'light', 'dark']
     let i = index(colors, g:ayucolor)
     let j = (i+1) % len(colors)
     let g:ayucolor = colors[j]

@@ -49,5 +49,3 @@ au! BufWritePost $MYVIMRC source %
 " auto source when writing to init.vm alternatively you can run :source
 " $MYVIMRC
 
-
-

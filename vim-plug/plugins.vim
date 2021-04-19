@@ -15,10 +15,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'ayu-theme/ayu-vim' 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-commentary'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'preservim/nerdtree'
     Plug 'tpope/vim-fugitive'
     Plug 'stsewd/fzf-checkout.vim'
+    Plug 'Vimjas/vim-python-pep8-indent'
+    Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " Vim-Go bug fix with folds

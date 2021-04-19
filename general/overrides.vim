@@ -1,3 +1,10 @@
 filetype plugin on
-set tabstop=4
+
+"---------------------------------------------
+" Language Specific Mappings/ Functions
+"---------------------------------------------
+" Python
+au Filetype python setlocal foldmethod=indent
+
+"---------------------------------------------
 

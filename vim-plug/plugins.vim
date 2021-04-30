@@ -33,4 +33,5 @@ source $HOME/.config/nvim/vim-plug/coc.vim
 source $HOME/.config/nvim/vim-plug/rooter.vim
 source $HOME/.config/nvim/vim-plug/nerdtree.vim
 source $HOME/.config/nvim/vim-plug/fugitive.vim
+source $HOME/.config/nvim/vim-plug/vimwiki.vim
 

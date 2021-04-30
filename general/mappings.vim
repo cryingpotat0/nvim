@@ -45,3 +45,7 @@ nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
 vnoremap <leader>j :m '>+1<CR>gv=gv
 vnoremap <leader>k :m '<-2<CR>gv=gv
+
+" Insert current date/time
+nnoremap <leader>t "=strftime("%c")<CR>p
+nnoremap <leader>tt "=strftime("%a %d %b %Y")<CR>p

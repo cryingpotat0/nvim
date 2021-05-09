@@ -33,11 +33,10 @@ template = \
 """
 ---
 title: {title}
+date: {date}
 ---
 
-:insert-tags-here:
-
-{date}
+:tags:
 
 [Link]({url})
 
@@ -57,7 +56,7 @@ def create_reading_note():
 
 
   with open('/Users/ragz/vimwiki/reading/index.md', 'a') as f:
-    f.write('- [{}]("reading/notes/{}.md")'.format(article_name, article_name_lower))
+    f.write('- [{}](reading/notes/{}.md)\n'.format(article_name, article_name_lower))
   vim.command(':e ' + article_path)
 
 PYEND

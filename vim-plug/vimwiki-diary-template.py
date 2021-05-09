@@ -30,7 +30,8 @@ def get_schedule(today):
     common = ("- [ ] No P\n"
               "- [ ] Cook\n"
               "    -\n"
-              "- [ ] Sleep by 11\n")
+              "- [ ] Sleep by 11\n"
+              "- [ ] No YouTube\n")
     exercise_base = "- [ ] Exercise\n"
     exercise = {
         "Monday": \

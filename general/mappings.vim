@@ -45,3 +45,7 @@ nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
 vnoremap <leader>j :m '>+1<CR>gv=gv
 vnoremap <leader>k :m '<-2<CR>gv=gv
+
+" Quickfix helpers.
+nnoremap <leader>cn :cn<CR>
+nnoremap <leader>cp :cp<CR>

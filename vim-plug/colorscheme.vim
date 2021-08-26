@@ -1,15 +1,15 @@
 set termguicolors     " enable true colors support
-let g:ayucolor="light"   " for dark version of theme
-colorscheme ayu
+let g:neon_style ="default"   " for dark version of theme
+colorscheme neon
 
 nnoremap <F2> :call CycleColor()<cr>
 
 fun! CycleColor()
-    let colors = ['mirage', 'light', 'dark']
-    let i = index(colors, g:ayucolor)
+    let colors = ['default', 'light', 'dark']
+    let i = index(colors, g:neon_style)
     let j = (i+1) % len(colors)
-    let g:ayucolor = colors[j]
-    colorscheme ayu
+    let g:neon_style = colors[j]
+    colorscheme neon
 endfun
 
 let g:colorcolumn_enabled = 1
@@ -27,3 +27,6 @@ fun! CycleColorColumn()
         let g:colorcolumn_enabled = 0
     endif
 endfun
+
+" Fix cursor color bug
+set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20

@@ -25,7 +25,7 @@ set smarttab
 set expandtab
 
 " Folds
-set foldmethod=syntax
+" set foldmethod=syntax
 set foldlevel=0 nomodeline
 
 "Auxillary options

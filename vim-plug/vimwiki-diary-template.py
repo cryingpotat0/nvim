@@ -1,6 +1,8 @@
 #!/Users/ragz/anaconda3/bin/python
 import sys
 import datetime
+import mistletoe
+import os
 from pathlib import Path
 
 DATE_FORMAT = '%Y-%m-%d'
@@ -73,23 +75,53 @@ def get_schedule(today):
 
     return common
 
+
+def _get_last_active_diary_path(today):
+    files = sorted(os.listdir('/Users/ragz/vimwiki/diary'))
+    today_str = today.strftime("%Y-%m-%d") + '.md'
+    if files[-2] == today_str:
+        return '/Users/ragz/vimwiki/diary/' + files[-3]
+    return '/Users/ragz/vimwiki/diary/' + files[-2]
+
 def get_checklist(today):
-    yesterday = today - datetime.timedelta(days=1)
-    new_checklist = []
-    old_checklist = []
-    checklist_started = False
-    #with open(f'~/vimwiki/diary/{yesterday.strftime("%Y-%m-%d")}.md') as f:
-    #    for lin in f.readlines():
-    #        checklist_started = "Checklist" in lin
-    #        if not checklist_started: continue
+    new_lines_for_previous = None
+    with open(_get_last_active_diary_path(today)) as f:
+       lines = f.readlines()
+       checklist_lines = None
+       for i, lin in enumerate(lines):
+           if not "Checklist" in lin: continue
 
-    #        if is_heading(lin):
-    #            new_checklist.push_back(lin)
-    #            old_checklist.push_back(lin)
-    #        elif is_incomplete_task
+           checklist_lines = lines[i+1:]
+           new_lines_for_previous = lines[:i+1]
+           last_day_checklist_start = i+1
+           break
+        
+       filtered_checklist = []
+       finished_checklist = []
+       for lin in checklist_lines:
+           # Completed or will-not-complete items, along with headings go to
+           # the previous days checklist
+           if '[X]' in lin or '[-]' in lin: 
+               finished_checklist.append(lin)
+               continue
+
+           if '-' not in lin:
+               finished_checklist.append(lin)
+
+           # Partially completed items will be made incomplete for the next
+           # day
+           if '[.]' in lin:
+               finished_checklist.append(lin)
+               lin = lin.replace('[.]', '[ ]')
+
+           filtered_checklist.append(lin)
+
+       new_lines_for_previous += finished_checklist
+
+    with open(_get_last_active_diary_path(today), 'w') as f:
+        f.write(''.join(new_lines_for_previous))
             
-
-    return "- [ ] \n"
+    return ''.join(filtered_checklist)
 
 today = get_date(sys.argv)
 output = template.format(

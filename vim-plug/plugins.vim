@@ -8,8 +8,8 @@ endif
 
 
 call plug#begin('~/.config/nvim/autoload/plugged')
-    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    " Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     " Plug 'airblade/vim-rooter'
     Plug 'vim-airline/vim-airline'
     " Plug 'ayu-theme/ayu-vim' 
@@ -25,15 +25,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
     Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
+    " Plug 'nvim-lua/plenary.nvim'
+    " Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " Vim-Go bug fix with folds
 let g:go_fmt_experimental=1 
 
 source $HOME/.config/nvim/vim-plug/commentary.vim
-" source $HOME/.config/nvim/vim-plug/fzf.vim
+source $HOME/.config/nvim/vim-plug/fzf.vim
 source $HOME/.config/nvim/vim-plug/colorscheme.vim
 source $HOME/.config/nvim/vim-plug/lsp-config.vim
 source $HOME/.config/nvim/vim-plug/nvim-compe.vim
@@ -46,7 +46,8 @@ source $HOME/.config/nvim/vim-plug/fugitive.vim
 
 " Telescope: TODO: move to separate file
 " Using Lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+" nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+" nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+" nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+" nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+

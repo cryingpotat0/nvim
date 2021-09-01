@@ -19,6 +19,7 @@ command! BD call fzf#run(fzf#wrap({
 " Fuzzy Search/ File find
 nnoremap <leader>F :GFiles<cr>
 nnoremap <leader>f :Files<cr>
+nnoremap <leader>fg :Rg<cr>
 nnoremap <leader>h :Buffers<cr>
 
 " Buffer delete

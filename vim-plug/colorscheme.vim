@@ -1,11 +1,11 @@
 set termguicolors     " enable true colors support
-let g:neon_style ="default"   " for dark version of theme
+let g:neon_style ="light"   " for dark version of theme
 colorscheme neon
 
 nnoremap <F2> :call CycleColor()<cr>
 
 fun! CycleColor()
-    let colors = ['default', 'light', 'dark']
+    let colors = ['light', 'default', 'dark']
     let i = index(colors, g:neon_style)
     let j = (i+1) % len(colors)
     let g:neon_style = colors[j]

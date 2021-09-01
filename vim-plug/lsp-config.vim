@@ -53,7 +53,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -62,6 +62,34 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+
+nvim_lsp.gopls.setup{
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = {"gopls", "-remote=auto", "-logfile", "/tmp/gopls.log"},
+    flags = {
+        debounce_text_changes = 150,
+    },
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = false,
+			linksInHover = true,
+			codelenses = {
+				generate = true,
+				gc_details = true,
+				regenerate_cgo = true,
+				tidy = true,
+				upgrade_depdendency = true,
+				vendor = true,
+			},
+			usePlaceholders = true,
+		},
+	},
+}
 
 EOF
 

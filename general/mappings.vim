@@ -49,3 +49,4 @@ vnoremap <leader>k :m '<-2<CR>gv=gv
 " Quickfix helpers.
 nnoremap <leader>cn :cn<CR>
 nnoremap <leader>cp :cp<CR>
+nnoremap <leader>cc :cclose<CR>

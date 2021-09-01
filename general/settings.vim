@@ -31,6 +31,7 @@ set foldlevel=0 nomodeline
 "Auxillary options
 set smartindent            " Makes indenting smart
 set autoindent             " Good auto indent
+set indentexpr=
 set laststatus=2           " Always display the status line
 set cursorline             " Enable highlighting of the current line
 set cmdheight=2            " More space for displaying messages

@@ -16,7 +16,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'rafamadriz/neon' 
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-commentary'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'preservim/nerdtree'
     Plug 'tpope/vim-fugitive'
     " Plug 'stsewd/fzf-checkout.vim'
@@ -27,6 +27,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/popup.nvim'
     " Plug 'nvim-lua/plenary.nvim'
     " Plug 'nvim-telescope/telescope.nvim'
+    Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " Vim-Go bug fix with folds
@@ -42,6 +43,7 @@ source $HOME/.config/nvim/vim-plug/treesitter.vim
 " source $HOME/.config/nvim/vim-plug/rooter.vim
 source $HOME/.config/nvim/vim-plug/nerdtree.vim
 source $HOME/.config/nvim/vim-plug/fugitive.vim
+source $HOME/.config/nvim/vim-plug/vimwiki.vim
 
 
 " Telescope: TODO: move to separate file

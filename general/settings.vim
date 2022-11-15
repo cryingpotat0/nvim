@@ -50,3 +50,5 @@ au! BufWritePost $MYVIMRC source %
 " auto source when writing to init.vm alternatively you can run :source
 " $MYVIMRC
 
+hi BlackBg guibg=LightGreen
+au TermOpen * :set winhighlight=Normal:BlackBg

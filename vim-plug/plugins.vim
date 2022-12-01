@@ -37,7 +37,7 @@ let g:go_fmt_experimental=1
 
 source $HOME/.config/nvim/vim-plug/commentary.vim
 source $HOME/.config/nvim/vim-plug/neorg.vim
-source $HOME/.config/nvim/vim-plug/fzf.vim
+" source $HOME/.config/nvim/vim-plug/fzf.vim
 source $HOME/.config/nvim/vim-plug/colorscheme.vim
 source $HOME/.config/nvim/vim-plug/lsp-config.vim
 source $HOME/.config/nvim/vim-plug/nvim-compe.vim
@@ -47,12 +47,6 @@ source $HOME/.config/nvim/vim-plug/treesitter.vim
 source $HOME/.config/nvim/vim-plug/nerdtree.vim
 source $HOME/.config/nvim/vim-plug/fugitive.vim
 source $HOME/.config/nvim/vim-plug/vimwiki.vim
+source $HOME/.config/nvim/vim-plug/telescope.vim
 
-
-" Telescope: TODO: move to separate file
-" Using Lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 

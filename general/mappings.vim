@@ -62,5 +62,6 @@ nnoremap <leader>cl :let @+=join([expand('%'), line('.')], ':')<CR>
 " Terminal helpers
 nnoremap <leader>tn :terminal<CR>
 tnoremap <Esc> <C-\><C-n>
+tnoremap <leader><Esc> <C-\><C-n>
 tnoremap <M-[> <Esc>
 tnoremap <C-v><Esc> <Esc>

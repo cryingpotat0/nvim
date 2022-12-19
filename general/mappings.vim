@@ -1,5 +1,5 @@
 " Buffer scroll keep the mapping 'like' C-n and C-o
-" nnoremap <tab> :bn<cr> " overwrites C-i
+nnoremap <tab> :bn<cr> " overwrites C-i
 nnoremap <s-tab> :bp<cr> 
 
 " Save control
@@ -10,17 +10,18 @@ nnoremap <Leader>w :w<cr>
 if has('macunix')
     nnoremap ∆  :resize +2<CR>
     nnoremap ˚  :resize -2<CR>
-    nnoremap ˙  :vertical resize -2<CR>
-    nnoremap ¬  :vertical resize +2<CR>
+    nnoremap ¬  :vertical resize -2<CR>
+    nnoremap ˙  :vertical resize +2<CR>
 else
     nnoremap <M-j>    :resize +2<CR>
     nnoremap <M-k>    :resize -2<CR>
-    nnoremap <M-h>    :vertical resize -2<CR>
-    nnoremap <M-l>    :vertical resize +2<CR>
+    nnoremap <M-l>    :vertical resize -2<CR>
+    nnoremap <M-h>    :vertical resize +2<CR>
 endif
 
 " Clear other buffers
 nnoremap <leader>l :only<cr>
+nnoremap <leader>fn :file 
 
 " Insert newlines without going into insert mode
 nnoremap <leader>O O<Esc>
@@ -46,6 +47,21 @@ nnoremap <leader>k :m .-2<CR>==
 vnoremap <leader>j :m '>+1<CR>gv=gv
 vnoremap <leader>k :m '<-2<CR>gv=gv
 
+" Quickfix helpers.
+nnoremap <leader>cn :cn<CR>
+nnoremap <leader>cp :cp<CR>
+nnoremap <leader>cc :cclose<CR>
+
 " Insert current date/time
-nnoremap <leader>t "=strftime("%c")<CR>p
+nnoremap <leader>tf "=strftime("%c")<CR>p " time full
 nnoremap <leader>tt "=strftime("%a %d %b %Y")<CR>p
+
+" Yank current line into a buffer.
+nnoremap <leader>cl :let @+=join([expand('%'), line('.')], ':')<CR>
+
+" Terminal helpers
+nnoremap <leader>tn :terminal<CR>
+tnoremap <Esc> <C-\><C-n>
+tnoremap <leader><Esc> <C-\><C-n>
+tnoremap <M-[> <Esc>
+tnoremap <C-v><Esc> <Esc>

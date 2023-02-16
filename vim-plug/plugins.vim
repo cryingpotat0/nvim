@@ -28,7 +28,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'vimwiki/vimwiki'
-    Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
     Plug 'chipsenkbeil/distant.nvim', { 'tag': 'v0.2'}
     Plug 'github/copilot.vim'
 
@@ -38,7 +37,6 @@ call plug#end()
 let g:go_fmt_experimental=1 
 
 source $HOME/.config/nvim/vim-plug/commentary.vim
-source $HOME/.config/nvim/vim-plug/neorg.vim
 " source $HOME/.config/nvim/vim-plug/fzf.vim
 source $HOME/.config/nvim/vim-plug/colorscheme.vim
 source $HOME/.config/nvim/vim-plug/lsp-config.vim

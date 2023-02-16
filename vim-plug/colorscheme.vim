@@ -5,7 +5,7 @@ colorscheme neon
 nnoremap <F2> :call CycleColor()<cr>
 
 fun! CycleColor()
-    let colors = ['light', 'default', 'dark']
+    let colors = ['light', 'default', 'dark', 'doom']
     let i = index(colors, g:neon_style)
     let j = (i+1) % len(colors)
     let g:neon_style = colors[j]

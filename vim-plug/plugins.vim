@@ -29,6 +29,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'vimwiki/vimwiki'
     Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+    Plug 'chipsenkbeil/distant.nvim', { 'tag': 'v0.2'}
+    Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -50,3 +52,13 @@ source $HOME/.config/nvim/vim-plug/vimwiki.vim
 source $HOME/.config/nvim/vim-plug/telescope.vim
 
 
+lua <<EOF
+require('distant').setup {
+      -- Applies Chip's personal settings to every machine you connect to
+      --
+      -- 1. Ensures that distant servers terminate with no connections
+      -- 2. Provides navigation bindings for remote directories
+      -- 3. Provides keybinding to jump into a remote file's parent directory
+      ['*'] = require('distant.settings').chip_default()
+    }
+EOF

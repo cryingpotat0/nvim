@@ -16,6 +16,7 @@ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.svelte lua vim.lsp.buf.formatting_sync(nil, 100)
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
@@ -56,7 +57,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'tsserver', 'solargraph'}
+local servers = { 'pyright', 'tsserver', 'solargraph', 'svelte',}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,

@@ -1,6 +1,12 @@
 set termguicolors     " enable true colors support
-let g:neon_style ="light"   " for dark version of theme
-colorscheme neon
+lua <<EOF
+vim.g.neon_style = "light"
+vim.g.neon_italic_keyword = true
+vim.g.neon_italic_function = true
+vim.g.neon_transparent = true
+vim.g.neon_bold = true
+vim.cmd[[colorscheme neon]]
+EOF
 
 nnoremap <F2> :call CycleColor()<cr>
 

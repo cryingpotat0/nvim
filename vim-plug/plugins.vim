@@ -14,19 +14,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-airline/vim-airline'
     " Plug 'ayu-theme/ayu-vim' 
     Plug 'rafamadriz/neon' 
-    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-commentary'
     " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'preservim/nerdtree'
     Plug 'tpope/vim-fugitive'
     " Plug 'stsewd/fzf-checkout.vim'
-    Plug 'neovim/nvim-lspconfig'
+    " Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/nvim-compe'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
     Plug 'nvim-lua/popup.nvim'
-    " Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
     Plug 'vimwiki/vimwiki'
     Plug 'chipsenkbeil/distant.nvim', { 'tag': 'v0.2'}
     Plug 'github/copilot.vim'
@@ -39,10 +39,10 @@ let g:go_fmt_experimental=1
 source $HOME/.config/nvim/vim-plug/commentary.vim
 " source $HOME/.config/nvim/vim-plug/fzf.vim
 source $HOME/.config/nvim/vim-plug/colorscheme.vim
-source $HOME/.config/nvim/vim-plug/lsp-config.vim
+" source $HOME/.config/nvim/vim-plug/lsp-config.vim
 source $HOME/.config/nvim/vim-plug/nvim-compe.vim
 source $HOME/.config/nvim/vim-plug/treesitter.vim
-" source $HOME/.config/nvim/vim-plug/coc.vim
+source $HOME/.config/nvim/vim-plug/coc.vim
 " source $HOME/.config/nvim/vim-plug/rooter.vim
 source $HOME/.config/nvim/vim-plug/nerdtree.vim
 source $HOME/.config/nvim/vim-plug/fugitive.vim

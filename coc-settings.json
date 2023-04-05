@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
+  "coc.preferences.formatOnSave": [
     "cpp",
     "hpp",
     "markdown",
@@ -8,7 +8,8 @@
     "yaml",
     "json",
     "go",
-    "css"
+    "css",
+    "ruby"
   ],
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
@@ -24,5 +25,25 @@
   "clangd.enabled": false,
   "go.goplsPath": "/Users/raghav/go/bin/gopls",
   "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
-  "workspace.ignoredFiletypes": ["markdown", "log", "txt", "help", "build/"]
+  "solargraph.diagnostics": true,
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "workspace.ignoredFiletypes": ["markdown", "log", "txt", "help", "build/"],
+  "languageserver": {
+      "sorbet": {
+          "command": "srb",
+          "args": ["tc", "--typed", "true", "--enable-all-experimental-lsp-features", "--lsp", "--disable-watchman"],
+          "filetypes": ["ruby"],
+          "rootPatterns": ["sorbet/config"],
+          "initializationOptions": {},
+          "settings": {}
+      }
+  },
+  "coc": {
+    "preferences": {
+      "useQuickfixForLocations": true
+    }
+  }
+
 }

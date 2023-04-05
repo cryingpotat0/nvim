@@ -17,6 +17,8 @@ autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.svelte lua vim.lsp.buf.formatting_sync(nil, 100)
+au BufRead,BufNewFile,BufEnter /Users/ranand/figma/figma/* setlocal ts=2 sts=2 sw=2
+
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
@@ -57,7 +59,16 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'tsserver', 'solargraph', 'svelte',}
+
+-- nvim_lsp.sorbet.setup{
+--     on_attach = on_attach,
+--     flags = {
+--       debounce_text_changes = 500,
+--     },
+--     cmd = { "srb", "tc", "--lsp", "." }
+-- }
+
+local servers = { 'pyright', 'tsserver', 'solargraph', 'gopls'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -66,14 +77,6 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-
-nvim_lsp.sorbet.setup{
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 500,
-    },
-    cmd = { "srb", "tc", "--lsp", "." }
-}
 
 nvim_lsp.rust_analyzer.setup{
     on_attach=on_attach,
@@ -101,7 +104,6 @@ nvim_lsp.rust_analyzer.setup{
 nvim_lsp.gopls.setup{
 	on_attach = on_attach,
 	capabilities = capabilities,
-	cmd = {"gopls", "-remote=auto", "-logfile", "/tmp/gopls.log"},
     flags = {
         debounce_text_changes = 150,
     },

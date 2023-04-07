@@ -8,16 +8,6 @@ vim.g.neon_bold = true
 vim.cmd[[colorscheme neon]]
 EOF
 
-nnoremap <F2> :call CycleColor()<cr>
-
-fun! CycleColor()
-    let colors = ['light', 'default', 'dark', 'doom']
-    let i = index(colors, g:neon_style)
-    let j = (i+1) % len(colors)
-    let g:neon_style = colors[j]
-    colorscheme neon
-endfun
-
 let g:colorcolumn_enabled = 1
 set colorcolumn=100
 highlight ColorColumn ctermbg=1 guibg=lightgrey

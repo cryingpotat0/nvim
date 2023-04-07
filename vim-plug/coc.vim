@@ -131,6 +131,19 @@ nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+let g:coc_max_treeview_width = 100
+autocmd FileType coctree set winwidth=100
+
+nnoremap <silent><nowait> <leader>o  :call ToggleOutline()<CR>
+function! ToggleOutline() abort
+    let winid = coc#window#find('cocViewId', 'OUTLINE')
+    if winid == -1
+        call CocActionAsync('showOutline', 1)
+    else
+        call coc#window#close(winid)
+    endif
+endfunction
+
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.

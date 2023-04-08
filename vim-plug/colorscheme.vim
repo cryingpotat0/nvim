@@ -10,7 +10,6 @@ EOF
 
 let g:colorcolumn_enabled = 1
 set colorcolumn=100
-highlight ColorColumn ctermbg=1 guibg=lightgrey
 
 nnoremap <F3> :call CycleColorColumn()<cr>
 fun! CycleColorColumn()
@@ -24,5 +23,4 @@ fun! CycleColorColumn()
     endif
 endfun
 
-" Fix cursor color bug
-set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20
+

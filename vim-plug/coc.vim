@@ -153,3 +153,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+hi CocHighlightText ctermfg=LightMagenta guifg=LightMagenta
+hi CocFloating ctermfg=LightMagenta guifg=LightMagenta
+hi CocFloatThumb ctermfg=LightMagenta guifg=LightMagenta

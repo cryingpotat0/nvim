@@ -38,10 +38,10 @@ let g:go_fmt_experimental=1
 
 source $HOME/.config/nvim/vim-plug/commentary.vim
 " source $HOME/.config/nvim/vim-plug/fzf.vim
-source $HOME/.config/nvim/vim-plug/colorscheme.vim
 " source $HOME/.config/nvim/vim-plug/lsp-config.vim
 source $HOME/.config/nvim/vim-plug/nvim-compe.vim
 source $HOME/.config/nvim/vim-plug/treesitter.vim
+source $HOME/.config/nvim/vim-plug/colorscheme.vim
 source $HOME/.config/nvim/vim-plug/coc.vim
 " source $HOME/.config/nvim/vim-plug/rooter.vim
 source $HOME/.config/nvim/vim-plug/nerdtree.vim

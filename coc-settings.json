@@ -40,6 +40,8 @@
           "settings": {}
       }
   },
+  "suggest.noselect": true,
+  "notification.disabledProgressSources": ["*"],
   "coc": {
     "preferences": {
       "useQuickfixForLocations": true

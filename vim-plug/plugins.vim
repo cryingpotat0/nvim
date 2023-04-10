@@ -21,7 +21,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-fugitive'
     " Plug 'stsewd/fzf-checkout.vim'
     " Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/nvim-compe'
+    " Plug 'hrsh7th/nvim-compe'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
     Plug 'nvim-lua/popup.nvim'
@@ -39,7 +39,7 @@ let g:go_fmt_experimental=1
 source $HOME/.config/nvim/vim-plug/commentary.vim
 " source $HOME/.config/nvim/vim-plug/fzf.vim
 " source $HOME/.config/nvim/vim-plug/lsp-config.vim
-source $HOME/.config/nvim/vim-plug/nvim-compe.vim
+" source $HOME/.config/nvim/vim-plug/nvim-compe.vim
 source $HOME/.config/nvim/vim-plug/treesitter.vim
 source $HOME/.config/nvim/vim-plug/colorscheme.vim
 source $HOME/.config/nvim/vim-plug/coc.vim
@@ -48,6 +48,7 @@ source $HOME/.config/nvim/vim-plug/nerdtree.vim
 source $HOME/.config/nvim/vim-plug/fugitive.vim
 source $HOME/.config/nvim/vim-plug/vimwiki.vim
 source $HOME/.config/nvim/vim-plug/telescope.vim
+source $HOME/.config/nvim/vim-plug/copilot.vim
 
 
 lua <<EOF

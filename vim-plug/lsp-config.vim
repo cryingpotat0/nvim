@@ -68,7 +68,7 @@ end
 --     cmd = { "srb", "tc", "--lsp", "." }
 -- }
 
-local servers = { 'pyright', 'tsserver', 'solargraph', 'gopls'}
+local servers = { 'pyright', 'solargraph', 'gopls'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -78,27 +78,55 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-nvim_lsp.rust_analyzer.setup{
-    on_attach=on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    }
-}
+-- nvim_lsp.rust_analyzer.setup{
+--     on_attach=on_attach,
+--     settings = {
+--         ["rust-analyzer"] = {
+--             imports = {
+--                 granularity = {
+--                     group = "module",
+--                 },
+--                 prefix = "self",
+--             },
+--             cargo = {
+--                 buildScripts = {
+--                     enable = true,
+--                 },
+--             },
+--             procMacro = {
+--                 enable = true
+--             },
+--         }
+--     }
+-- }
+
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr, auto_focus = true })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+
+rt.inlay_hints.set()
+rt.inlay_hints.enable()
+
+require("typescript").setup({
+    disable_commands = false, -- prevent the plugin from creating Vim commands
+    debug = false, -- enable debug logging for commands
+    go_to_source_definition = {
+        fallback = true, -- fall back to standard LSP definition on failure
+    },
+    server = { -- pass options to lspconfig's setup method
+        on_attach = on_attach, 
+    },
+})
 
 
 nvim_lsp.gopls.setup{

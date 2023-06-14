@@ -23,8 +23,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jose-elias-alvarez/typescript.nvim'
     Plug 'nvim-tree/nvim-web-devicons'
     Plug 'folke/trouble.nvim'
-
     Plug 'hrsh7th/nvim-compe'
+    Plug 'ldelossa/litee.nvim'
+    Plug 'ldelossa/litee-symboltree.nvim'
+
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
     Plug 'nvim-lua/popup.nvim'

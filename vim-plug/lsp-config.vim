@@ -21,54 +21,15 @@ au BufRead,BufNewFile,BufEnter /Users/ranand/figma/figma/* setlocal ts=2 sts=2 s
 
 
 lua << EOF
+-- require('litee.lib').setup({})
+-- require('litee.symboltree').setup({})
 local nvim_lsp = require('lspconfig')
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']g', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
-end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 
--- nvim_lsp.sorbet.setup{
---     on_attach = on_attach,
---     flags = {
---       debounce_text_changes = 500,
---     },
---     cmd = { "srb", "tc", "--lsp", "." }
--- }
 
-local servers = { 'pyright', 'solargraph', 'gopls'}
+local servers = { 'pyright'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -78,34 +39,12 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- nvim_lsp.rust_analyzer.setup{
---     on_attach=on_attach,
---     settings = {
---         ["rust-analyzer"] = {
---             imports = {
---                 granularity = {
---                     group = "module",
---                 },
---                 prefix = "self",
---             },
---             cargo = {
---                 buildScripts = {
---                     enable = true,
---                 },
---             },
---             procMacro = {
---                 enable = true
---             },
---         }
---     }
--- }
-
+-- Rust
 local rt = require("rust-tools")
 
 rt.setup({
   server = {
     on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
       -- Hover actions
       vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr, auto_focus = true })
       -- Code action groups
@@ -117,20 +56,18 @@ rt.setup({
 rt.inlay_hints.set()
 rt.inlay_hints.enable()
 
+-- Typescript
 require("typescript").setup({
     disable_commands = false, -- prevent the plugin from creating Vim commands
     debug = false, -- enable debug logging for commands
     go_to_source_definition = {
         fallback = true, -- fall back to standard LSP definition on failure
     },
-    server = { -- pass options to lspconfig's setup method
-        on_attach = on_attach, 
-    },
 })
 
 
+-- Go
 nvim_lsp.gopls.setup{
-	on_attach = on_attach,
 	capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
@@ -155,6 +92,73 @@ nvim_lsp.gopls.setup{
 	},
 }
 
+-- Ruby
+nvim_lsp.sorbet.setup{
+    flags = {
+      debounce_text_changes = 500,
+    },
+    cmd = { "srb", "tc", "--lsp", "." }
+}
+nvim_lsp.solargraph.setup {
+    filetypes = {
+        "ruby"
+    },
+    flags = {
+        debounce_text_changes = 150
+    },
+    root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+    capabilities = capabilities,
+    handlers = handlers,
+    settings = {
+        solargraph = {
+            autoformat = true,
+            completion = true,
+            diagnostic = true,
+            folding = true,
+            references = true,
+            rename = true,
+            symbols = true
+        }
+    }
+}
+
+
+
+
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
+
 EOF
-
-

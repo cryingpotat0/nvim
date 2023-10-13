@@ -31,10 +31,9 @@ local nvim_lsp = require('lspconfig')
 -- map buffer local keybindings when the language server attaches
 
 
-local servers = { 'pyright'}
+local servers = { 'pyright', 'svelte', 'tailwindcss'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
-    on_attach = on_attach,
     flags = {
       debounce_text_changes = 500,
     }

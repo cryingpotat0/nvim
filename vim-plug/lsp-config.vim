@@ -14,10 +14,12 @@ autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.svelte lua vim.lsp.buf.formatting_sync(nil, 100)
 au BufRead,BufNewFile,BufEnter /Users/ranand/figma/figma/* setlocal ts=2 sts=2 sw=2
+au BufRead,BufNewFile,BufEnter *.ts* setlocal ts=2 sts=2 sw=2
 
 
 lua << EOF
@@ -40,21 +42,55 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Rust
-local rt = require("rust-tools")
+-- local rt = require("rust-tools")
+--
+-- rt.setup({
+--   server = {
+--     on_attach = function(client, bufnr)
+--         flags = {
+--             debounce_text_changes = 150
+--         },
+--       -- Hover actions
+--       vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr, auto_focus = true })
+--       -- Code action groups
+--       vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+--     end,
+--   },
+-- })
+--
+-- rt.inlay_hints.set()
+-- rt.inlay_hints.enable()
 
-rt.setup({
-  server = {
-    on_attach = function(client, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr, auto_focus = true })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
+local opts = {
+  tools = {
+    runnables = {
+      use_telescope = true,
+    },
+    inlay_hints = {
+      auto = true,
+      show_parameter_hints = false,
+      parameter_hints_prefix = "",
+      other_hints_prefix = "",
+    },
   },
-})
 
-rt.inlay_hints.set()
-rt.inlay_hints.enable()
+  -- all the opts to send to nvim-lspconfig
+  -- these override the defaults set by rust-tools.nvim
+  -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+  server = {
+    settings = {
+      -- to enable rust-analyzer settings visit:
+      -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+      ["rust-analyzer"] = {
+        -- enable clippy on save
+        checkOnSave = {
+          command = "clippy",
+        },
+      },
+    },
+  },
+}
+require("rust-tools").setup(opts)
 
 -- Typescript
 require("typescript").setup({

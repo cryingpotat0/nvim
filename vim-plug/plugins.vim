@@ -11,7 +11,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'vim-airline/vim-airline'
-    Plug 'rafamadriz/neon' 
+    " Plug 'rafamadriz/neon' 
+    Plug 'Shatur/neovim-ayu'
     " " Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-commentary'
     Plug 'preservim/nerdtree'
@@ -21,9 +22,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'simrat39/rust-tools.nvim'
     Plug 'jose-elias-alvarez/typescript.nvim'
+    Plug 'sbdchd/neoformat'
     " Plug 'nvim-tree/nvim-web-devicons'
     " Plug 'folke/trouble.nvim'
-    Plug 'hrsh7th/nvim-compe'
+    " Plug 'hrsh7th/nvim-compe'
     " Plug 'ldelossa/litee.nvim'
     " Plug 'ldelossa/litee-symboltree.nvim'
 
@@ -31,8 +33,20 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'nvim-treesitter/playground'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.3' }
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
     Plug 'github/copilot.vim'
+
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-copilot'
+
+    " For vsnip users.
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
+
 
 call plug#end()
 

@@ -9,17 +9,23 @@
 " nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " auto-format
-autocmd BufWritePre *.js lua vim.lsp.buf.format(nil, 100)
-autocmd BufWritePre *.jsx lua vim.lsp.buf.format(nil, 100)
+augroup fmt
+" autocmd BufWritePre *.js lua vim.lsp.buf.format(nil, 100)
+" autocmd BufWritePre *.jsx lua vim.lsp.buf.format(nil, 100)
+" autocmd BufWritePre *.ts lua vim.lsp.buf.format(nil, 100)
+" autocmd BufWritePre *.tsx lua vim.lsp.buf.format(nil, 100)
+autocmd BufWritePre *.js Neoformat prettier
+autocmd BufWritePre *.jsx Neoformat prettier
+autocmd BufWritePre *.ts Neoformat prettier
+autocmd BufWritePre *.tsx Neoformat prettier
 autocmd BufWritePre *.py lua vim.lsp.buf.format(nil, 100)
 autocmd BufWritePre *.go lua vim.lsp.buf.format(nil, 100)
-autocmd BufWritePre *.ts lua vim.lsp.buf.format(nil, 100)
-autocmd BufWritePre *.tsx lua vim.lsp.buf.format(nil, 100)
 autocmd BufWritePre *.rb lua vim.lsp.buf.format(nil, 100)
 autocmd BufWritePre *.rs lua vim.lsp.buf.format(nil, 100)
 autocmd BufWritePre *.svelte lua vim.lsp.buf.format(nil, 100)
-au BufRead,BufNewFile,BufEnter /Users/ranand/figma/figma/* setlocal ts=2 sts=2 sw=2
-au BufRead,BufNewFile,BufEnter *.ts* setlocal ts=2 sts=2 sw=2
+" au BufRead,BufNewFile,BufEnter /Users/ranand/figma/figma/* setlocal ts=2 sts=2 sw=2
+" au BufRead,BufNewFile,BufEnter *.ts* setlocal ts=2 sts=2 sw=2
+augroup END
 
 
 lua << EOF

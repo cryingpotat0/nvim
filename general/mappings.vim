@@ -59,6 +59,21 @@ nnoremap <leader>tt "=strftime("%a %d %b %Y")<CR>p
 " Yank current line into a buffer.
 nnoremap <leader>cl :let @+=join([expand('%'), line('.')], ':')<CR>
 
+" Yank current line into buffer with git remote link as
+" https://github.com/org/repo/tree/{hash}/{file_path}#L{line}
+nnoremap <leader>cg :let @+=join([
+  \ 'https://github.com/',
+  \ substitute(system('git remote get-url origin'), '.*github.com[:/]\(.*\)\.git$', '\1', ''),
+  \ '/tree/',
+  \ substitute(system('git rev-parse HEAD'), '\n$', '', ''),
+  \ '/',
+  \ expand('%'),
+  \ '#L',
+  \ line('.')
+  \ ], '')<CR>
+
+" Yank current line into buffer with git remote link as
+
 " Terminal helpers
 nnoremap <leader>tn :terminal<CR>
 tnoremap <Esc> <C-\><C-n>

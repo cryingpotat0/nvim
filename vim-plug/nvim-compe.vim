@@ -29,17 +29,13 @@ end
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ["<Tab>"] = cmp.mapping(function(fallback)
-              if cmp.visible() then
-                cmp.select_next_item()
-              elseif vim.fn["vsnip#available"](1) == 1 then
-                feedkey("<Plug>(vsnip-expand-or-jump)", "")
-              elseif has_words_before() then
-                cmp.complete()
-              else
-                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-              end
-            end, { "i", "s" }),
+    ["<Tab>"] = vim.schedule_wrap(function(fallback)
+      if cmp.visible() and has_words_before() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      else
+        fallback()
+      end
+    end),
 
       ["<S-Tab>"] = cmp.mapping(function()
               if cmp.visible() then
@@ -50,8 +46,8 @@ end
             end, { "i", "s" }),
     }),
     sources = cmp.config.sources({
-      { name = 'copilot' },
-      { name = 'nvim_lsp' },
+      { name = "copilot", group_index = 2 },
+      { name = 'nvim_lsp', group_index = 2  },
       { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.

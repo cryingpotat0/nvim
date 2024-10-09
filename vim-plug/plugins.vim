@@ -18,8 +18,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'preservim/nerdtree'
     Plug 'tpope/vim-fugitive'
 
+    " Copilot
+    Plug 'zbirenbaum/copilot.lua'
+    Plug 'zbirenbaum/copilot-cmp'
+
     " LSP things
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'neovim/nvim-lspconfig'
+
     Plug 'simrat39/rust-tools.nvim'
     Plug 'jose-elias-alvarez/typescript.nvim'
     Plug 'sbdchd/neoformat'
@@ -34,14 +41,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
-    Plug 'github/copilot.vim'
+    " Plug 'github/copilot.vim'
 
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-copilot'
+    " Plug 'hrsh7th/cmp-copilot'
 
     " For vsnip users.
     Plug 'hrsh7th/cmp-vsnip'
@@ -61,6 +68,8 @@ source $HOME/.config/nvim/vim-plug/colorscheme.vim
 source $HOME/.config/nvim/vim-plug/nerdtree.vim
 source $HOME/.config/nvim/vim-plug/fugitive.vim
 source $HOME/.config/nvim/vim-plug/telescope.vim
+
+
 source $HOME/.config/nvim/vim-plug/copilot.vim
 " source $HOME/.config/nvim/vim-plug/trouble.vim
 

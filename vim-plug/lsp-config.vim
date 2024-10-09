@@ -27,10 +27,12 @@ autocmd BufWritePre *.svelte lua vim.lsp.buf.format(nil, 100)
 " au BufRead,BufNewFile,BufEnter *.ts* setlocal ts=2 sts=2 sw=2
 augroup END
 
-
 lua << EOF
 -- require('litee.lib').setup({})
 -- require('litee.symboltree').setup({})
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 local nvim_lsp = require('lspconfig')
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -203,3 +205,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 EOF
+

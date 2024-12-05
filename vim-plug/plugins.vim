@@ -10,6 +10,10 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+    " optional for icon support
+    Plug 'nvim-tree/nvim-web-devicons'
+
     Plug 'vim-airline/vim-airline'
     " Plug 'rafamadriz/neon' 
     Plug 'Shatur/neovim-ayu'
@@ -36,19 +40,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'ldelossa/litee.nvim'
     " Plug 'ldelossa/litee-symboltree.nvim'
 
-    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    " Plug 'nvim-treesitter/playground'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
-    " Plug 'github/copilot.vim'
 
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
-    " Plug 'hrsh7th/cmp-copilot'
 
     " For vsnip users.
     Plug 'hrsh7th/cmp-vsnip'
@@ -67,7 +66,7 @@ source $HOME/.config/nvim/vim-plug/nvim-compe.vim
 source $HOME/.config/nvim/vim-plug/colorscheme.vim
 source $HOME/.config/nvim/vim-plug/nerdtree.vim
 source $HOME/.config/nvim/vim-plug/fugitive.vim
-source $HOME/.config/nvim/vim-plug/telescope.vim
+source $HOME/.config/nvim/vim-plug/fzf-lua.vim
 
 
 source $HOME/.config/nvim/vim-plug/copilot.vim

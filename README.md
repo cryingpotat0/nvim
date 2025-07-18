@@ -137,6 +137,22 @@ Plugins are automatically installed when you start Neovim.
 - **`:MasonInstall <server>`** - Install language server
 - **`:MasonUpdate`** - Update all language servers
 
+#### Automatic Installation
+The following language servers are automatically installed:
+- **lua_ls** - Lua language server
+- **rust_analyzer** - Rust language server  
+- **ts_ls** - TypeScript/JavaScript language server
+- **pyright** - Python language server
+
+#### Manual Installation
+If automatic installation fails, install manually:
+```
+:MasonInstall lua-language-server
+:MasonInstall rust-analyzer
+:MasonInstall typescript-language-server
+:MasonInstall pyright
+```
+
 ## 🎨 Themes
 
 Currently using **ayu** colorscheme. The theme loads automatically on startup.

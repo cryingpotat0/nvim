@@ -18,16 +18,29 @@ return {
         textDocument = { completion = { completionItem = { snippetSupport = false } } },
       })
       
-      -- Basic LSP setup - servers need to be installed manually via Mason
       local lspconfig = require("lspconfig")
       
-      -- Only setup servers that are available
-      local servers = { "lua_ls", "rust_analyzer", "ts_ls" }
+      -- Setup servers (install manually via Mason)
+      local servers = {
+        lua_ls = {},
+        rust_analyzer = {},
+        ts_ls = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "workspace",
+              },
+            },
+          },
+        },
+      }
       
-      for _, server in ipairs(servers) do
-        lspconfig[server].setup({
-          capabilities = capabilities,
-        })
+      for server, config in pairs(servers) do
+        config.capabilities = capabilities
+        lspconfig[server].setup(config)
       end
     end,
   },

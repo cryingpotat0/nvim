@@ -48,7 +48,10 @@ keymap("v", "<leader>k", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 -- Quickfix helpers
 keymap("n", "<leader>cn", ":cn<CR>", { desc = "Next quickfix" })
 keymap("n", "<leader>cp", ":cp<CR>", { desc = "Previous quickfix" })
-keymap("n", "<leader>cc", ":cclose<CR>", { desc = "Close quickfix" })
+keymap("n", "<leader>cq", ":cclose<CR>", { desc = "Close quickfix" })
+
+-- Claude Code
+keymap("n", "<leader>cc", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code (vertical right)" })
 
 -- Folding mappings
 keymap("n", "zR", ":set foldlevel=99<CR>", { desc = "Open all folds" })

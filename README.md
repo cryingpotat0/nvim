@@ -104,6 +104,14 @@ When in oil.nvim buffer:
 - **`zj`** - Move to next fold
 - **`zk`** - Move to previous fold
 
+### Claude Code Integration
+- **`;cc`** - Toggle Claude Code (opens in vertical split on right, 30% width)
+
+### Quickfix Navigation
+- **`;cn`** - Next quickfix item
+- **`;cp`** - Previous quickfix item  
+- **`;cq`** - Close quickfix list
+
 ### Other Utilities
 - **`;tn`** - Open terminal
 - **`<Esc>`** - Exit terminal mode
@@ -130,7 +138,8 @@ When in oil.nvim buffer:
 │       ├── lsp.lua         # Language server support
 │       ├── completion.lua  # Completion system (blink.cmp)
 │       ├── copilot.lua     # AI assistance
-│       └── treesitter.lua  # Syntax highlighting and folding
+│       ├── treesitter.lua  # Syntax highlighting and folding
+│       └── claude-code.lua # Claude Code integration
 └── README.md               # This file
 ```
 

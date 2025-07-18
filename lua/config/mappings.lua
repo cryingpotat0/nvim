@@ -73,8 +73,8 @@ keymap("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
 keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
 keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
 keymap("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
-keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+keymap("n", "[g", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+keymap("n", "]g", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 
 -- Insert current date/time
 keymap("n", "<leader>tf", '"=strftime("%c")<CR>p', { desc = "Insert full time" })

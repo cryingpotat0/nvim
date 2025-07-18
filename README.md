@@ -66,6 +66,19 @@ When in oil.nvim buffer:
 - **`;gs`** - Git status
 - **`;gb`** - Git blame
 
+### LSP Navigation
+- **`gd`** - Go to definition
+- **`gr`** - Go to references (opens in quickfix list)
+- **`gD`** - Go to declaration
+- **`gi`** - Go to implementation
+- **`gt`** - Go to type definition
+- **`K`** - Show hover information
+- **`;rn`** - Rename symbol
+- **`;ca`** - Code actions
+- **`;d`** - Show diagnostic popup
+- **`[d`** - Previous diagnostic
+- **`]d`** - Next diagnostic
+
 ### Code Actions
 - **`;f`** - Format file (Neoformat)
 - **`gcc`** - Toggle comment line

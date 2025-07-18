@@ -60,6 +60,19 @@ keymap("n", "zc", "zc", { desc = "Close fold under cursor" })
 keymap("n", "zj", "zj", { desc = "Move to next fold" })
 keymap("n", "zk", "zk", { desc = "Move to previous fold" })
 
+-- LSP mappings
+keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+keymap("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
+keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+keymap("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+keymap("n", "gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+keymap("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
+keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
+keymap("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
+keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+
 -- Insert current date/time
 keymap("n", "<leader>tf", '"=strftime("%c")<CR>p', { desc = "Insert full time" })
 keymap("n", "<leader>tt", '"=strftime("%a %d %b %Y")<CR>p', { desc = "Insert date" })

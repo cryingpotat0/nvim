@@ -20,6 +20,10 @@ return {
       { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
       { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Find buffers" },
       { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Help tags" },
+      { "<leader>gg", "<cmd>FzfLua grep<cr>", desc = "Grep" },
+      { "<leader>gp", "<cmd>FzfLua grep_project<cr>", desc = "Grep project" },
+      { "<leader>h", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+      { "<leader>gb", "<cmd>FzfLua git_branches<cr>", desc = "Git branches" },
     },
     config = function()
       require("fzf-lua").setup({

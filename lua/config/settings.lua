@@ -20,6 +20,13 @@ vim.opt.shiftwidth = 4
 vim.opt.smarttab = true
 vim.opt.expandtab = true
 
+-- Folding configuration
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99  -- Start with all folds open
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
 -- Auxiliary options
 vim.opt.smartindent = true
 vim.opt.autoindent = true

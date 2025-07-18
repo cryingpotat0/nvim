@@ -71,6 +71,26 @@ When in oil.nvim buffer:
 - **`gcc`** - Toggle comment line
 - **`gc`** - Toggle comment (visual mode)
 
+### Completion (blink.cmp)
+- **`<Tab>`** - Select next completion item
+- **`<Shift-Tab>`** - Select previous completion item
+- **`<Up>`** / **`<Down>`** - Select next/previous completion item
+- **`<Enter>`** - Accept selected completion item
+- **`<C-y>`** - Accept selected completion item
+- **`<C-Space>`** - Open completion menu or show docs if already open
+- **`<C-e>`** - Hide completion menu
+- **`<C-k>`** - Show/hide signature help
+
+### Code Folding
+- **`zR`** - Open all folds
+- **`zM`** - Close all folds
+- **`za`** - Toggle fold under cursor
+- **`zA`** - Toggle fold recursively
+- **`zo`** - Open fold under cursor
+- **`zc`** - Close fold under cursor
+- **`zj`** - Move to next fold
+- **`zk`** - Move to previous fold
+
 ### Other Utilities
 - **`;tn`** - Open terminal
 - **`<Esc>`** - Exit terminal mode
@@ -95,8 +115,9 @@ When in oil.nvim buffer:
 │       ├── editor.lua      # Editor enhancements
 │       ├── search.lua      # Search and fuzzy finding
 │       ├── lsp.lua         # Language server support
-│       ├── completion.lua  # Completion system
-│       └── copilot.lua     # AI assistance
+│       ├── completion.lua  # Completion system (blink.cmp)
+│       ├── copilot.lua     # AI assistance
+│       └── treesitter.lua  # Syntax highlighting and folding
 └── README.md               # This file
 ```
 

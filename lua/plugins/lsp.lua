@@ -10,17 +10,24 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = { "williamboman/mason.nvim", "saghen/blink.cmp" },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
+      -- Get blink.cmp capabilities with snippets disabled
+      local capabilities = require("blink.cmp").get_lsp_capabilities({
+        textDocument = { completion = { completionItem = { snippetSupport = false } } },
+      })
+      
       -- Basic LSP setup - servers need to be installed manually via Mason
       local lspconfig = require("lspconfig")
       
       -- Only setup servers that are available
-      local servers = { "lua_ls", "rust_analyzer", "tsserver" }
+      local servers = { "lua_ls", "rust_analyzer", "ts_ls" }
       
       for _, server in ipairs(servers) do
-        lspconfig[server].setup({})
+        lspconfig[server].setup({
+          capabilities = capabilities,
+        })
       end
     end,
   },
@@ -39,6 +46,7 @@ return {
     config = function()
       require("typescript").setup({
         server = {
+          name = "ts_ls",  -- Use the new ts_ls name
           on_attach = function(client, bufnr)
             -- Add any TypeScript-specific configuration here
           end,

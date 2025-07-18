@@ -6,16 +6,10 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
+        -- Disable native suggestion and panel to work with blink-cmp-copilot
         suggestion = { enabled = false },
         panel = { enabled = false },
       })
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "zbirenbaum/copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
     end,
   },
 }

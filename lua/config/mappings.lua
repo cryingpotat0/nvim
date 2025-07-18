@@ -50,6 +50,16 @@ keymap("n", "<leader>cn", ":cn<CR>", { desc = "Next quickfix" })
 keymap("n", "<leader>cp", ":cp<CR>", { desc = "Previous quickfix" })
 keymap("n", "<leader>cc", ":cclose<CR>", { desc = "Close quickfix" })
 
+-- Folding mappings
+keymap("n", "zR", ":set foldlevel=99<CR>", { desc = "Open all folds" })
+keymap("n", "zM", ":set foldlevel=0<CR>", { desc = "Close all folds" })
+keymap("n", "za", "za", { desc = "Toggle fold under cursor" })
+keymap("n", "zA", "zA", { desc = "Toggle fold recursively" })
+keymap("n", "zo", "zo", { desc = "Open fold under cursor" })
+keymap("n", "zc", "zc", { desc = "Close fold under cursor" })
+keymap("n", "zj", "zj", { desc = "Move to next fold" })
+keymap("n", "zk", "zk", { desc = "Move to previous fold" })
+
 -- Insert current date/time
 keymap("n", "<leader>tf", '"=strftime("%c")<CR>p', { desc = "Insert full time" })
 keymap("n", "<leader>tt", '"=strftime("%a %d %b %Y")<CR>p', { desc = "Insert date" })

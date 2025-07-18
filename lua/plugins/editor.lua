@@ -3,13 +3,15 @@ return {
   {
     "tpope/vim-commentary",
     event = "VeryLazy",
+    keys = {
+      { "<leader><leader>", "<cmd>Commentary<cr>", desc = "Toggle comment", mode = { "n", "v" } },
+    },
   },
   {
     "tpope/vim-fugitive",
-    cmd = { "Git", "Gstatus", "Gblame", "Gpush", "Gpull" },
+    cmd = { "Git", "Gdiffsplit" },
     keys = {
-      { "<leader>gs", "<cmd>Git<cr>", desc = "Git status" },
-      { "<leader>gb", "<cmd>Gblame<cr>", desc = "Git blame" },
+      { "<leader>G", "<cmd>Git<cr>", desc = "Git status" },
     },
   },
   {

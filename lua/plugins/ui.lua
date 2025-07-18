@@ -11,9 +11,30 @@ return {
     config = function()
       require("ayu").setup({
         mirage = false,
+        terminal = true,
         overrides = {},
       })
-      vim.cmd("colorscheme ayu")
+      vim.cmd("colorscheme ayu-light")
+      
+      -- Set up colorcolumn
+      vim.opt.termguicolors = true
+      vim.g.colorcolumn_enabled = 1
+      vim.opt.colorcolumn = "100"
+      
+      -- Function to cycle colorcolumn
+      function CycleColorColumn()
+        if vim.g.colorcolumn_enabled == 0 then
+          vim.opt.colorcolumn = "100"
+          vim.cmd("highlight ColorColumn ctermbg=1 guibg=lightgrey")
+          vim.g.colorcolumn_enabled = 1
+        else
+          vim.opt.colorcolumn = "0"
+          vim.g.colorcolumn_enabled = 0
+        end
+      end
+      
+      -- Set up keymapping for F3
+      vim.keymap.set("n", "<F3>", CycleColorColumn, { desc = "Cycle color column" })
     end,
   },
   {

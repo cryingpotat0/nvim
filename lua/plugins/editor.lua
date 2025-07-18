@@ -4,7 +4,8 @@ return {
     "tpope/vim-commentary",
     event = "VeryLazy",
     keys = {
-      { "<leader><leader>", "<cmd>Commentary<cr>", desc = "Toggle comment", mode = { "n", "v" } },
+      { "<leader><leader>", "<cmd>Commentary<cr>", desc = "Toggle comment", mode = "n" },
+      { "<leader><leader>", ":<C-u>'<,'>Commentary<cr>", desc = "Toggle comment", mode = "v" },
     },
   },
   {

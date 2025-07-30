@@ -53,17 +53,14 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/typescript.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     config = function()
-      require("typescript").setup({
-        server = {
-          name = "ts_ls",  -- Use the new ts_ls name
-          on_attach = function(client, bufnr)
-            -- Add any TypeScript-specific configuration here
-          end,
-        },
+      require("typescript-tools").setup({
+        on_attach = function(client, bufnr)
+          -- Add any TypeScript-specific configuration here
+        end,
       })
     end,
   },
